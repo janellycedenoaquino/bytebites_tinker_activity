@@ -75,7 +75,7 @@ class Menu:
         return self.items
 
     def filter_by_category(self, category: str) -> list:
-        return [item for item in self.items if item.get_category() == category]
+        return [item for item in self.items if item.get_category().lower() == category.lower()]
 
 
 class Transaction:
@@ -115,7 +115,7 @@ class Transaction:
         return True
 
     def calculate_total_cost(self) -> Decimal:
-        self.total_cost = sum(item.get_price() * qty for item, qty in self.selected_items.items())
+        self.total_cost = sum((item.get_price() * qty for item, qty in self.selected_items.items()), Decimal("0"))
         return self.total_cost
 
 
