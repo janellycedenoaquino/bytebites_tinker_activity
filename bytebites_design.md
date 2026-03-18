@@ -24,20 +24,22 @@ classDiagram
 
     class Menu {
         -items: List~FoodItem~
-        +addItem(item: FoodItem) void
-        +removeItem(item: FoodItem) void
+        +addItem(item: FoodItem) bool
+        +removeItem(item: FoodItem) bool
         +getAllItems() List~FoodItem~
         +filterByCategory(category: String) List~FoodItem~
     }
 
     class Transaction {
         -customer: Customer
-        -selectedItems: List~FoodItem~
+        -menu: Menu
+        -selectedItems: Map~FoodItem, Integer~
         -totalCost: Decimal
         +getCustomer() Customer
-        +getSelectedItems() List~FoodItem~
+        +getSelectedItems() Map~FoodItem, Integer~
         +getTotalCost() Decimal
-        +addItem(item: FoodItem) void
+        +addItem(item: FoodItem) bool
+        +removeItem(item: FoodItem) bool
         +calculateTotalCost() Decimal
     }
 
