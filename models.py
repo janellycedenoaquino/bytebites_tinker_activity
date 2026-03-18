@@ -126,37 +126,9 @@ if __name__ == "__main__":
 
     # --- Menu ---
     menu = Menu()
-    print("Add burger:", menu.add_item(burger))        # True
-    print("Add soda:", menu.add_item(soda))            # True
-    print("Add burger again:", menu.add_item(burger))  # False - duplicate
+    menu.add_item(burger)
+    menu.add_item(soda)
     print("All items:", [i.get_name() for i in menu.get_all_items()])
-    print("Filter Mains:", [i.get_name() for i in menu.filter_by_category("Mains")])
-    print("Remove soda:", menu.remove_item(soda))      # True
-    print("Remove soda again:", menu.remove_item(soda))  # False - already removed
     print("All items after removal:", [i.get_name() for i in menu.get_all_items()])
 
-    # --- Transaction ---
-    menu.add_item(soda)  # add soda back
-    customer = Customer("Alice")
-    txn = Transaction(customer, menu)
-
-    ghost = FoodItem("Unicorn Steak", Decimal("999.99"), "Fantasy", 5.0)
-    print("\nAdd ghost item:", txn.add_item(ghost))    # False - not on menu
-    print("Add burger:", txn.add_item(burger))         # True
-    print("Add burger again:", txn.add_item(burger))   # True - qty becomes 2
-    print("Add soda:", txn.add_item(soda))             # True
-    print("Selected items:", {i.get_name(): qty for i, qty in txn.get_selected_items().items()})
-    print("Total cost:", txn.get_total_cost())         # 9.99*2 + 2.50 = 22.48
-
-    print("Remove one burger:", txn.remove_item(burger))    # True - qty becomes 1
-    print("Selected items:", {i.get_name(): qty for i, qty in txn.get_selected_items().items()})
-    print("Total cost after removal:", txn.get_total_cost())  # 9.99 + 2.50 = 12.49
-
-    print("Remove burger again:", txn.remove_item(burger))   # True - key removed
-    print("Remove burger again:", txn.remove_item(burger))   # False - not in order
-    print("Selected items:", {i.get_name(): qty for i, qty in txn.get_selected_items().items()})
-
-    # --- Customer purchase history ---
-    customer.add_purchase(txn)
-    print("\nCustomer:", customer.get_name())
-    print("Purchase history count:", len(customer.get_purchase_history()))
+    # --- Transaction --- (moved to test_bytebites.py)
