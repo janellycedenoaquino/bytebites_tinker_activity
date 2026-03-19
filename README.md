@@ -9,12 +9,14 @@ A food ordering app built with Streamlit and Python.
 ### Landing
 ![Landing](images/landing.png)
 
-### Adding Items
-![Add Items](images/Add%20items.png)
+### Adding New Items
+![Add Items](images/Add%20new%20items.png)
+
+### Order Total
+![Order Placed](images/Order%20Total.png)
 
 ### Order Placed
 ![Order Placed](images/Order%20Placed.png)
-
 ---
 
 ## Features
