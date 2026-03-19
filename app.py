@@ -326,7 +326,10 @@ with st.expander("＋ Add a new item to the menu"):
                 added = st.session_state.menu.add_item(
                     FoodItem(iname.strip(), Decimal(str(iprice)), icat, ipop)
                 )
-                st.success("Added!") if added else st.warning("An item with that name already exists.")
+                if added:
+                    st.success("Added!")
+                else:
+                    st.warning("An item with that name already exists.")
             else:
                 st.warning("Please enter an item name.")
 
